@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Location Reminders</string>
+    <string name="no_data">No Data</string>
+    <string name="reminder_title">Reminder Title</string>
+    <string name="reminder_desc">Description</string>
+    <string name="reminder_location">Reminder Location</string>
+    <string name="save">Save</string>
+    <string name="reminder_saved">Reminder Saved !</string>
+    <string name="logout">Logout</string>
+    <string name="normal_map">Normal Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="satellite_map">Satellite Map</string>
+    <string name="terrain_map">Terrain Map</string>
+    <string name="dropped_pin">Dropped Pin</string>
+    <string name="permission_denied_explanation">You need to grant location permission in order to select the location.</string>
+    <string name="geofence_entered">Geofence Entered</string>
+    <string name="select_location">Please select location</string>
+    <string name="err_enter_title">Please enter title</string>
+    <string name="err_select_location">Please select location</string>
+    <string name="register_or_login">Register / Login</string>
+    <string name="logout_failed">Failed to logout</string>
+
+    <!-- Error strings -->
+    <string name="error_adding_geofence">Error Happened, Can\'t Add Geofence</string>
+    <string name="save_the_location">Save the location</string>
+    <string name="map_fragment">map_fragment</string>
+    <string name="save_reminder">Save Reminder</string>
+    <string name="add_reminder">Add Reminder</string>
+    <string name="login_required">Login Required</string>
+    <string name="select_method_of_login">Select Method of Login</string>
+    <string name="radius">Radius</string>
+    <string name="err_select_radius">Radius must be specified</string>
+</resources>

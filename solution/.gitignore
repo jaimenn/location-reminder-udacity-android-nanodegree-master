@@ -1,0 +1,12 @@
+*.iml
+*.ipr
+*.iws
+.idea/
+build/
+.gradle/
+captures/
+app/build/
+app/captures/
+app/.idea/
+app/google-services.json
+local.properties

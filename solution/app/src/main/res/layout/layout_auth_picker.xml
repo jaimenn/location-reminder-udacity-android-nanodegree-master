@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:text="@string/select_method_of_login"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_large"
+            app:drawableTopCompat="@drawable/ic_login" />
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/email_sign_in_button"
+        style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/fui_sign_in_with_email"
+        android:textAllCaps="true"
+        app:backgroundTint="@color/fui_bgEmail"
+        app:icon="@drawable/fui_ic_mail_white_24dp" />
+
+    <Button
+        android:id="@+id/google_sign_in_button"
+        style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/fui_sign_in_with_google"
+        android:textAllCaps="true"
+        app:backgroundTint="@color/fui_bgGoogle"
+        app:icon="@drawable/fui_ic_googleg_color_24dp"
+        app:iconTint="@null" />
+
+</LinearLayout>
