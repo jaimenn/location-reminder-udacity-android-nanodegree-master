@@ -27,8 +27,4 @@ class RemindersActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    fun showToast(text: Int, duration: Int) {
-        Toast.makeText(this, text, duration).show()
-    }
 }

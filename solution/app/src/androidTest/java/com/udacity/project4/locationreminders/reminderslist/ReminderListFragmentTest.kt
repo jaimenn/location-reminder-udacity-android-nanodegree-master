@@ -104,7 +104,6 @@ class ReminderListFragmentTest {
         verify(navController).navigate(ReminderListFragmentDirections.toSaveReminder())
     }
 
-
     @Test
     fun withReminders_showsOnScreen() {
         val reminder = validDataItem.toDTO()

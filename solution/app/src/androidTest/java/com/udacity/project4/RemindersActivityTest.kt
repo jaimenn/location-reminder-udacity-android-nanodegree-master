@@ -1,6 +1,6 @@
 package com.udacity.project4
 
-import androidx.fragment.app.testing.FragmentScenario
+import android.app.Activity
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.closeSoftKeyboard
@@ -9,7 +9,6 @@ import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -21,10 +20,10 @@ import com.udacity.project4.locationreminders.data.dto.ReminderDTO
 import com.udacity.project4.locationreminders.data.local.LocalDB
 import com.udacity.project4.locationreminders.data.local.RemindersLocalRepository
 import com.udacity.project4.locationreminders.reminderslist.RemindersListViewModel
-import com.udacity.project4.locationreminders.savereminder.SaveReminderFragment
 import com.udacity.project4.locationreminders.savereminder.SaveReminderViewModel
 import com.udacity.project4.locationreminders.savereminder.selectreminderlocation.SelectLocationViewModel
 import com.udacity.project4.util.*
+import com.udacity.project4.util.ToastMatcher.Companion.onToast
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers.*
 import org.junit.After
@@ -38,6 +37,7 @@ import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.get
+import org.koin.test.inject
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -130,6 +130,7 @@ class RemindersActivityTest : AutoCloseKoinTest() { // Extended Koin Test - embe
     @Test
     fun addReminderAndNavigateBackShowToastReminderSaved() {
         val scenario = ActivityScenario.launch(RemindersActivity::class.java)
+        val viewModel = inject<RemindersListViewModel>().value
         dataBindingIdlingResource.monitorActivity(scenario)
 
         onView(withId(R.id.noDataTextView)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
@@ -142,15 +143,14 @@ class RemindersActivityTest : AutoCloseKoinTest() { // Extended Koin Test - embe
         onView(withId(R.id.reminderDescription)).perform(typeText("Description"))
 
         closeSoftKeyboard()
+        val testToastText = "Reminder Saved !"
 
         onView(withId(R.id.saveReminder)).perform(click())
-        onView(withId(R.id.noDataTextView)).check(matches(withEffectiveVisibility(Visibility.GONE)))
         onView(withText("Title")).check(matches(isDisplayed()))
         onView(withText("Description")).check(matches(isDisplayed()))
-//        onView(withText(R.string.toast_reminder_saved)).check(matches(isDisplayed()))
 
-        onView(withText("Reminder Saved !")).inRoot(ToastMatcher())
-            .check(matches(isDisplayed()))
+        viewModel.showToast.postValue(testToastText)
+        onToast(testToastText).check(matches(isDisplayed()))
     }
 
     @Test

@@ -1,6 +1,5 @@
 package com.udacity.project4.base
 
-import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar

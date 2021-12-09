@@ -7,7 +7,7 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion "30.0.3"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.udacity.project4"
@@ -76,10 +76,9 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
     implementation "androidx.multidex:multidex:$multidexVersion"
 
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.8'
 
     // Architecture Components
-    implementation 'androidx.appcompat:appcompat:1.2.0'
     kapt "androidx.lifecycle:lifecycle-common-java8:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"

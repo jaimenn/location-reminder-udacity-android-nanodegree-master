@@ -17,8 +17,11 @@ import kotlinx.coroutines.launch
 class SaveReminderViewModel(var app: Application, private val dataSource: ReminderDataSource) :
     BaseViewModel(app) {
 
-    val reminderTitle = MutableLiveData<String>()
-    val reminderDescription = MutableLiveData<String>()
+    val reminderTitle = MutableLiveData<String?>()
+    val reminderDescription = MutableLiveData<String?>()
+    val reminderSelectedLocationStr = MutableLiveData<String?>()
+    val latitude = MutableLiveData<Double?>()
+    val longitude = MutableLiveData<Double?>()
 
     private val _selectedPlaceOfInterest = MutableLiveData<PointOfInterest>()
     private val _selectedRadius = MutableLiveData<Float>()
@@ -65,7 +68,7 @@ class SaveReminderViewModel(var app: Application, private val dataSource: Remind
     /**
      * Save the reminder to the data source
      */
-    private fun saveReminder(reminderData: ReminderDataItem) {
+    fun saveReminder(reminderData: ReminderDataItem) {
         showLoading.value = true
         viewModelScope.launch {
             dataSource.saveReminder(
@@ -80,13 +83,14 @@ class SaveReminderViewModel(var app: Application, private val dataSource: Remind
                 )
             )
             showLoading.value = false
+            showToast.value = app.getString(R.string.toast_reminder_saved)
         }
     }
 
     /**
      * Validate the entered data and show error to the user if there's any invalid data
      */
-    private fun validateEnteredData(reminderData: ReminderDataItem): Boolean {
+    fun validateEnteredData(reminderData: ReminderDataItem): Boolean {
         if (reminderData.title.isNullOrEmpty()) {
             showSnackBarInt.value = R.string.err_enter_title
             return false
@@ -105,6 +109,8 @@ class SaveReminderViewModel(var app: Application, private val dataSource: Remind
     }
 
     fun setSelectedLocation(placeOfInterest: PointOfInterest) {
+        latitude.postValue(placeOfInterest.latLng.latitude)
+        longitude.postValue(placeOfInterest.latLng.longitude)
         _selectedPlaceOfInterest.postValue(placeOfInterest)
     }
 

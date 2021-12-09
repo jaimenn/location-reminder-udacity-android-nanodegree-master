@@ -12,11 +12,7 @@
 
         <action
             android:id="@+id/toSaveReminder"
-            app:destination="@id/saveReminderFragment"
-            app:enterAnim="@anim/fragment_open_enter"
-            app:exitAnim="@anim/fragment_open_exit"
-            app:popEnterAnim="@anim/fragment_close_enter"
-            app:popExitAnim="@anim/fragment_close_exit" />
+            app:destination="@id/saveReminderFragment" />
 
     </fragment>
 
@@ -28,11 +24,7 @@
 
         <action
             android:id="@+id/toSelectLocationFragment"
-            app:destination="@id/selectLocationFragment"
-            app:enterAnim="@anim/fragment_open_enter"
-            app:exitAnim="@anim/fragment_open_exit"
-            app:popEnterAnim="@anim/fragment_close_enter"
-            app:popExitAnim="@anim/fragment_close_exit" />
+            app:destination="@id/selectLocationFragment" />
 
     </fragment>
 
