@@ -1,5 +1,6 @@
 package com.udacity.project4.base
 
+import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -26,11 +27,11 @@ abstract class BaseFragment : PermissionManager() {
         }
 
         viewModel.showSnackBar.observe(this) {
-            Snackbar.make(this.requireView(), it, Snackbar.LENGTH_LONG).show()
+            Snackbar.make(this.view!!, it, Snackbar.LENGTH_LONG).show()
         }
 
         viewModel.showSnackBarInt.observe(this) {
-            Snackbar.make(this.requireView(), getString(it), Snackbar.LENGTH_LONG).show()
+            Snackbar.make(this.view!!, getString(it), Snackbar.LENGTH_LONG).show()
         }
 
         viewModel.navigationCommand.observe(this) { command ->

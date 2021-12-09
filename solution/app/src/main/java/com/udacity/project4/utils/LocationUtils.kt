@@ -40,13 +40,19 @@ object LocationUtils {
     @SuppressLint("MissingPermission")
     fun requestSingleUpdate(block: (Location) -> Unit) {
         fun doRequest() {
-            locationManager?.getLastKnownLocation(PROVIDER)?.let {
-                block(it)
-                return
-            }
+            if (hasLocationPermissions()) {
+                locationManager?.getLastKnownLocation(PROVIDER)?.let {
+                    block(it)
+                    return
+                }
 
-            locationManager?.getCurrentLocation(PROVIDER, null, requestExecutor) {
-                Handler(Looper.getMainLooper()).post { block(it ?: return@post) }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    locationManager?.getCurrentLocation(PROVIDER, null, requestExecutor) {
+                        Handler(Looper.getMainLooper()).post { block(it ?: return@post) }
+                    }
+                }
+            } else {
+                block(Location(LocationManager.NETWORK_PROVIDER))
             }
         }
 
@@ -56,8 +62,6 @@ object LocationUtils {
                     doRequest()
                 }
             }
-        } else {
-            doRequest()
         }
     }
 

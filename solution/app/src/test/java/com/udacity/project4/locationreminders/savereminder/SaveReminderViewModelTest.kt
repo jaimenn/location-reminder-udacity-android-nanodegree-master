@@ -54,7 +54,7 @@ class SaveReminderViewModelTest {
     fun viewModel_savingValidItemSucceeds() {
         val returnValue = viewModel.validateAndSaveReminder(validDataItem)
         assertThat(returnValue).isTrue()
-        assertThat(viewModel.showToast.getOrAwaitValue()).isEqualTo(getString(R.string.reminder_saved))
+        assertThat(viewModel.showToast.getOrAwaitValue()).isEqualTo(getString(R.string.toast_reminder_saved))
     }
 
     @Test

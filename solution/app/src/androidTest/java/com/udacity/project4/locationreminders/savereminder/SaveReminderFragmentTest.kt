@@ -144,6 +144,6 @@ class SaveReminderFragmentTest {
         closeSoftKeyboard()
 
         onView(withId(R.id.saveReminder)).perform(click())
-        assertThat(viewModel.showToast.getOrAwaitValue()).isEqualTo(getString(R.string.reminder_saved))
+        assertThat(viewModel.showToast.getOrAwaitValue()).isEqualTo(getString(R.string.toast_reminder_saved))
     }
 }
