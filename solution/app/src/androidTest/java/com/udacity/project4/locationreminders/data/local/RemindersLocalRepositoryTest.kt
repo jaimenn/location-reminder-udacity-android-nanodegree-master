@@ -42,7 +42,7 @@ class RemindersLocalRepositoryTest {
         database = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
             RemindersDatabase::class.java
-        ).allowMainThreadQueries().build()
+        ).build()
 
         repository = RemindersLocalRepository(database.reminderDao(), Dispatchers.Main)
     }

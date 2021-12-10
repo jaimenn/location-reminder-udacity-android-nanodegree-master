@@ -22,6 +22,7 @@ import com.udacity.project4.locationreminders.data.ReminderDataSource
 import com.udacity.project4.locationreminders.data.local.LocalDB
 import com.udacity.project4.locationreminders.data.local.RemindersLocalRepository
 import com.udacity.project4.locationreminders.geofence.GeofenceConstants
+import com.udacity.project4.locationreminders.reminderslist.ReminderDataItem
 import com.udacity.project4.locationreminders.util.getOrAwaitValue
 import com.udacity.project4.locationreminders.util.getString
 import com.udacity.project4.locationreminders.util.validDataItem
@@ -106,8 +107,6 @@ class SaveReminderFragmentTest {
 
     @Test
     fun noLocationWillFail() {
-        viewModel.setSelectedRadius(GeofenceConstants.DEFAULT_RADIUS_IN_METRES)
-
         val navController = mock(NavController::class.java)
         val scenario =
             launchFragmentInContainer<SaveReminderFragment>(Bundle.EMPTY, R.style.AppTheme)

@@ -15,6 +15,6 @@ object LocalDB {
         return Room.databaseBuilder(
             context.applicationContext,
             RemindersDatabase::class.java, "locationReminders.db"
-        ).build().reminderDao()
+        ).allowMainThreadQueries().build().reminderDao()
     }
 }
