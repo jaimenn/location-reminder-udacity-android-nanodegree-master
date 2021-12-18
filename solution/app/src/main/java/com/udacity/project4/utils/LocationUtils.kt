@@ -9,8 +9,6 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
-import android.os.Handler
-import android.os.Looper
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.model.LatLng
@@ -49,12 +47,6 @@ object LocationUtils {
                     block(it)
                     return
                 }
-
-//                if (Build.VERSION.SDK_INT >= 30) {
-//                    locationManager?.getCurrentLocation(PROVIDER, null, requestExecutor) {
-//                        Handler(Looper.getMainLooper()).post { block(it ?: return@post) }
-//                    }
-//                }
             } else {
                 block(Location(LocationManager.NETWORK_PROVIDER))
             }
@@ -103,7 +95,7 @@ object LocationUtils {
         }
     }
 
-    fun hasLocationPermissions(): Boolean =
+    private fun hasLocationPermissions(): Boolean =
         PermissionManager.arePermissionsGranted(*locationPermissions)
 
     fun requestPermissions(handler: (PermissionsResultEvent) -> Unit) =
@@ -114,4 +106,3 @@ const val REQUEST_FOREGROUND_LOCATION_PERMISSIONS_REQUEST_CODE = 34
 const val REQUEST_FOREGROUND_AND_BACKGROUND_LOCATION_PERMISSION_RESULT_CODE = 33
 
 private val runningQ = android.os.Build.VERSION.SDK_INT == android.os.Build.VERSION_CODES.Q
-//private val runningROrLater = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R
